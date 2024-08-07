@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Attendance API{% endblock %}</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'employee_list' %}">Employee List</a></li> <!-- link to employee list page -->
+                <li><a href="">Add Employee</a></li>  <!-- link to add employee page -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Content from child templates will be inserted here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Attendance API</p>
+    </footer>
+
+   <!-- <script src=" js file will go here "></script> -->
+</body>
+</html>
