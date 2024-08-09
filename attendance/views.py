@@ -31,3 +31,5 @@ class HolidayViewSet(viewsets.ModelViewSet):
     filterset_fields = ['date']
     search_fields = ['name']
     ordering_fields = ['date', 'name']
+
+
