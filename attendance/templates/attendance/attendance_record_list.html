@@ -1,0 +1,31 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Attendance Records List{% endblock %}
+
+{% block content %}
+<h2>Attendance Records</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Check-in Time</th>
+            <th>Check-out Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in attendance_records %}
+            <tr>
+                <td>{{ record.employee.name }}</td>
+                <td>{{ record.date }}</td>
+                <td>{{ record.check_in_time }}</td>
+                <td>{{ record.check_out_time }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">No attendance records found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

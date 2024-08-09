@@ -1,11 +1,14 @@
 from django.db import models
 from employees.models import Employee
+import attendance
+from django.db.models import DurationField
 
 class AttendanceRecord(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField()
     check_in_time = models.TimeField()
     check_out_time = models.TimeField(null=True, blank=True)
+    total_work_hours = DurationField(null=True, blank=True)
     STATUS_CHOICES = [
         ('Present', 'Present'),
         ('Absent', 'Absent'),
@@ -13,9 +16,14 @@ class AttendanceRecord(models.Model):
         ('Half-day', 'Half-day'),
     ]
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    SHIFT_CHOICES = [
+        ('Day', 'Day Shift'),
+        ('Night', 'Night Shift'),
+    ]
+    shift = models.CharField(max_length=10, choices=SHIFT_CHOICES, default='Day')
 
     def __str__(self):
-        return f"{self.employee} - {self.date} - {self.status}"
+        return f"{self.employee} - {self.date} - {self.status} - {self.shift}"
 
 class LeaveRequest(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
