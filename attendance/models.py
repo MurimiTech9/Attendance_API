@@ -24,7 +24,7 @@ class AttendanceRecord(models.Model):
     @admin.display(description='Total Work Hours')
     def calculate_work_hours(self):
         if self.check_in_time and self.check_out_time:
-            # Create a dummy date to combine with the time
+            # a dummy date to combine with the time
             dummy_date = datetime.now().date()
             
             # Combine the dummy date with check_in and check_out times
@@ -50,7 +50,7 @@ def save(self, *args, **kwargs):
 
 def __str__(self):
     return f"{self.employee} - {self.date} - {self.status} - {self.shift}"
-  
+'''   
 class LeaveRequest(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     start_date = models.DateField()
@@ -71,7 +71,7 @@ class LeaveRequest(models.Model):
 
     def __str__(self):
         return f"{self.employee} - {self.leave_type} ({self.start_date} to {self.end_date})"
-
+'''
 class Holiday(models.Model):
     date = models.DateField()
     name = models.CharField(max_length=100)

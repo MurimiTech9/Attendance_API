@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import AttendanceRecord, LeaveRequest, Holiday
+from .models import AttendanceRecord, Holiday
 
-admin.site.register(LeaveRequest)
 admin.site.register(Holiday)
 
 @admin.register(AttendanceRecord)
