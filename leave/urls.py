@@ -1,11 +1,10 @@
 
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import LeaveRequestViewSet
+from django.urls import path
+from leave import views 
+from .views import LeaveRequestAPIView
 
-router = DefaultRouter()
-router.register(r'leave-requests', LeaveRequestViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('leave/', views.leave_request, name='leave_request_list'),
+    path('api/leave/', LeaveRequestAPIView.as_view(), name='leave-request-api'),
 ]

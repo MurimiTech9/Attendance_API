@@ -5,6 +5,7 @@ from .serializers import LeaveRequestSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
 
 # Create your views here.
 class LeaveRequestViewSet(viewsets.ModelViewSet):
@@ -18,3 +19,7 @@ class LeaveRequestViewSet(viewsets.ModelViewSet):
 
 def leave_request(request):
     return render(request, 'leave/leave_request.html')
+
+class LeaveRequestAPIView(generics.ListCreateAPIView):
+    queryset = LeaveRequest.objects.all()
+    serializer_class = LeaveRequestSerializer
