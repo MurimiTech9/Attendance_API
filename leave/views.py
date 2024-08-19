@@ -23,3 +23,7 @@ def leave_request(request):
 class LeaveRequestAPIView(generics.ListCreateAPIView):
     queryset = LeaveRequest.objects.all()
     serializer_class = LeaveRequestSerializer
+
+class LeaveDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = LeaveRequest.objects.all()
+    serializer_class = LeaveRequestSerializer

@@ -6,7 +6,8 @@ from django.contrib import admin
 class AttendanceRecord(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField()
-    check_in_time = models.TimeField()
+    is_absent = models.BooleanField(default=False)
+    check_in_time = models.TimeField(null=True, blank=True)
     check_out_time = models.TimeField(null=True, blank=True)
     STATUS_CHOICES = [
         ('Present', 'Present'),
@@ -14,7 +15,7 @@ class AttendanceRecord(models.Model):
         ('Late', 'Late'),
         ('Half-day', 'Half-day'),
     ]
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Absent')
     SHIFT_CHOICES = [
         ('Day', 'Day Shift'),
         ('Night', 'Night Shift'),
