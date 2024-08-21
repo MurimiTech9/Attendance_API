@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'attendance',
     'django_filters',
+    #'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -90,13 +91,25 @@ REST_FRAMEWORK = {
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+''' 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+''' 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sasa_pay_attendance',  # The name of the database you created
+        'USER': 'murimitech10',         # Your MySQL username, e.g., 'root' or the user you created
+        'PASSWORD': 'root2024@SPAY',     # The password for your MySQL user
+        'HOST': 'localhost',             # 'localhost' if the database is on the same machine
+        'PORT': '3306',                  # The default port for MySQL
+    }
+}
+
 
 
 # Password validation
